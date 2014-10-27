@@ -9,6 +9,10 @@ gem 'devise'
 
 gem 'paperclip', '~> 4.2'
 
+gem 'jquery-turbolinks'
+
+gem 'masonry-rails', '~> 0.2.0'
+
 group :development, :test do
 	gem 'sqlite3'
 end
