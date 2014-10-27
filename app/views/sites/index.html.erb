@@ -1,0 +1,34 @@
+<h1>Listing sites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Description</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sites.each do |site| %>
+      <tr>
+        <td><%= image_tag site.image.url(:thumb) %></td>
+        <td><%= site.description %></td>
+        <td><%= site.user_id %></td>
+        <td><%= link_to 'Show', site_path(site) %></td>
+        <% if site.user == current_user %>
+          <td><%= link_to 'Edit', edit_site_path(site) %></td>
+          <td><%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Site', new_site_path %>
+<% end %>
