@@ -1,10 +1,9 @@
 <div id="sites" class="transitions-enabled">
   <% @sites.each do |site| %>
     <div class="box panel panel-default">
-      <%= image_tag site.image.url(:medium) %>
+      <%= link_to image_tag(site.image.url(:medium)), site %>
       <div class="panel-body">
         <%= site.description %>
-        <%= site.user_id %>
         <%= link_to 'Show', site_path(site) %>
         <% if site.user == current_user %>
           <%= link_to 'Edit', edit_site_path(site) %>

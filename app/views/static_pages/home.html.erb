@@ -1,3 +1,24 @@
-<div class="jumbotron">
-	<h1>Welcome to The Woodsie!</h1>
-</div>
+<% if signed_in? %>
+	<div id="sites" class="transitions-enabled">
+	  <% @sites.each do |site| %>
+	    <div class="box panel panel-default">
+	      <%= link_to image_tag(site.image.url(:medium)), site %>
+	      <div class="panel-body">
+	        <%= site.description %>
+	        <%= link_to 'Show', site_path(site) %>
+	        <% if site.user == current_user %>
+	          <%= link_to 'Edit', edit_site_path(site) %>
+	          <%= link_to 'Destroy', site, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        <% end %>
+	      </div>
+	    </div>
+	  <% end %>
+	</div>
+
+<% else %>
+
+	<div class="jumbotron">
+		<h1>Welcome to The Woodsie!</h1>
+	</div>
+
+<% end %>
