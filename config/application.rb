@@ -22,5 +22,8 @@ module Woodsie
 
     # For devise
     config.assets.initialize_on_precompile = false
+
+    # For AWS S3
+    config.paperclip_defaults = { :storage => :s3, :s3_host_name => 's3-eu-west-1.amazonaws.com' }
   end
 end
